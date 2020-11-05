@@ -1,0 +1,4 @@
+C:/Users/Dyuhman/Documents/Restructuring/build-Restruction-Desktop_Qt_5_12_2_MinGW_64_bit-Debug/CMakeFiles/Restruction.dir
+C:/Users/Dyuhman/Documents/Restructuring/build-Restruction-Desktop_Qt_5_12_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Dyuhman/Documents/Restructuring/build-Restruction-Desktop_Qt_5_12_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Dyuhman/Documents/Restructuring/build-Restruction-Desktop_Qt_5_12_2_MinGW_64_bit-Debug/CMakeFiles/Restruction_autogen.dir
