@@ -1,9 +1,0 @@
-# ninja log v5
-2	1352	0	CMakeFiles/Restruction_autogen	c28935b4c821630
-2	1352	0	Restruction_autogen/mocs_compilation.cpp	c28935b4c821630
-1352	4390	6262991174639073	CMakeFiles/Restruction.dir/Restruction_autogen/mocs_compilation.cpp.obj	964cc8698467186b
-1357	4644	6262991177196887	CMakeFiles/Restruction.dir/mainwindow.cpp.obj	75dad8b019457b43
-1355	4699	6262991177761451	CMakeFiles/Restruction.dir/main.cpp.obj	e42845602595bb10
-4699	5709	6262991184122082	Restruction.exe	fffcb0152ed77663
-6	61	0	CMakeFiles/Restruction_autogen	c28935b4c821630
-6	61	0	Restruction_autogen/mocs_compilation.cpp	c28935b4c821630

@@ -28,18 +28,36 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 if(ANDROID)
-  add_library(Test123 SHARED
+  add_library(Restructuring SHARED
     main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
+    menuwindow.cpp
+    flatwindow.cpp
+    settingswindow.cpp
+    gamewindow.cpp
+    menuwindow.h
+    flatwindow.h
+    settingswindow.h
+    gamewindow.h
+    menuwindow.ui
+    flatwindow.ui
+    settingswindow.ui
+    gamewindow.ui
   )
 else()
   add_executable(Restructuring
     main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
+    menuwindow.cpp
+    flatwindow.cpp
+    settingswindow.cpp
+    gamewindow.cpp
+    menuwindow.h
+    flatwindow.h
+    settingswindow.h
+    gamewindow.h
+    menuwindow.ui
+    flatwindow.ui
+    settingswindow.ui
+    gamewindow.ui
   )
 endif()
 
