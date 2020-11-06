@@ -31,15 +31,29 @@ if(ANDROID)
   add_library(Test123 SHARED
     main.cpp
     mainwindow.cpp
+    startgame.cpp
+    settings.cpp
     mainwindow.h
+    startgame.h
+    settings.h
     mainwindow.ui
+    startgame.ui
+    settings.ui
+    resource.qrc
   )
 else()
   add_executable(Restructuring
     main.cpp
     mainwindow.cpp
+    startgame.cpp
+    settings.cpp
     mainwindow.h
+    startgame.h
+    settings.h
     mainwindow.ui
+    startgame.ui
+    settings.ui
+    resource.qrc
   )
 endif()
 

@@ -53,46 +53,48 @@
      <string>Выход</string>
     </property>
    </widget>
-   <widget class="QLabel" name="MainImage">
+   <widget class="QLabel" name="ImageMM">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>353</width>
-      <height>400</height>
+      <width>351</width>
+      <height>401</height>
      </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>353</width>
-      <height>400</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>353</width>
-      <height>400</height>
-     </size>
-    </property>
-    <property name="autoFillBackground">
-     <bool>true</bool>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/main.jpg</pixmap>
+     <pixmap>o/main.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
    </widget>
-   <zorder>MainImage</zorder>
+   <zorder>ImageMM</zorder>
    <zorder>StartButton</zorder>
    <zorder>SettingsButton</zorder>
    <zorder>QuitButton</zorder>
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>QuitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>341</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>362</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

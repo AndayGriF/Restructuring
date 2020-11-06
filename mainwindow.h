@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "startgame.h"
+#include "settings.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,7 +20,11 @@ public:
 private slots:
     void on_StartButton_clicked();
 
+    void on_SettingsButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+    StartGame *SG;
+    Settings *SET;
 };
 #endif // MAINWINDOW_H
