@@ -15,4 +15,6 @@ Settings::~Settings()
 
 void Settings::on_MainMenu_clicked()
 {
+    this->close();
+    emit firstWindow();
 }

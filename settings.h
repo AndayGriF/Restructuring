@@ -15,6 +15,9 @@ public:
     explicit Settings(QWidget *parent = nullptr);
     ~Settings();
 
+signals:
+    void firstWindow();
+
 private slots:
 
     void on_MainMenu_clicked();

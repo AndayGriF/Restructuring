@@ -12,3 +12,9 @@ StartGame::~StartGame()
 {
     delete ui;
 }
+
+void StartGame::on_MainMenu_clicked()
+{
+    this->close();
+    emit firstWindow();
+}

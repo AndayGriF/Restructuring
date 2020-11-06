@@ -2,8 +2,6 @@
 #include "./ui_mainwindow.h"
 #include <QPixmap>
 
-//"C:/Users/Andrey/Document/Programing/Resource/main.jpg
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -11,6 +9,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     QPixmap imageMain (":/Recource/Image/main.jpg");
     ui->ImageMM -> setPixmap (imageMain);
+    SG = new StartGame(this);
+    connect(SG, &StartGame::firstWindow, this, &MainWindow::show);
+    SET = new Settings(this);
+    connect(SET, &Settings::firstWindow, this, &MainWindow::show);
 }
 
 MainWindow::~MainWindow()
@@ -22,13 +24,11 @@ MainWindow::~MainWindow()
 void MainWindow::on_StartButton_clicked()
 {
     hide();
-    SG = new StartGame(this);
     SG->show();
 }
 
 void MainWindow::on_SettingsButton_clicked()
 {
     hide();
-    SET = new Settings(this);
     SET->show();
 }
