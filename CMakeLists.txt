@@ -42,6 +42,7 @@ if(ANDROID)
     flatwindow.ui
     settingswindow.ui
     gamewindow.ui
+    random.h
   )
 else()
   add_executable(Restructuring
@@ -58,6 +59,7 @@ else()
     flatwindow.ui
     settingswindow.ui
     gamewindow.ui
+    random.h
   )
 endif()
 

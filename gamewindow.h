@@ -1,11 +1,10 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
+#include <iostream>
 #include <QMainWindow>
 
-namespace Ui {
-class GameWindow;
-}
+namespace Ui { class GameWindow; }
 
 class GameWindow : public QMainWindow
 {
@@ -14,6 +13,9 @@ class GameWindow : public QMainWindow
 public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
+
+private slots:
+    void on_changeButton_clicked();
 
 private:
     Ui::GameWindow *ui;
