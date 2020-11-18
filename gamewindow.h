@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <QMainWindow>
+#include <QMessageBox>
 
 namespace Ui { class GameWindow; }
 
@@ -16,6 +17,8 @@ public:
 
 private slots:
     void on_changeButton_clicked();
+
+    void on_card1Button_clicked();
 
 private:
     Ui::GameWindow *ui;
