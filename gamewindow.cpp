@@ -2,19 +2,21 @@
 #include "ui_gamewindow.h"
 #include "random.h"
 
-typedef struct player
+typedef struct
 {
     int money;
     int count_card;
-} player;
+} Player;
 
-typedef struct playerPK1
+void initPlayer(Player *player)
 {
-    int money;
-    int count_card;
-} playerPK1;
+    player->money = 2;
+    player->count_card = 2;
+}
 
-int cards[15]; //Колода карт
+static int cards[15]; //Колода карт
+Player *player = (Player*) malloc(sizeof(Player));
+Player *playerPC1 = (Player*) malloc(sizeof(Player));
 
 void fillCards(int *cards)  //Заполнение колоды
 {
@@ -92,6 +94,9 @@ GameWindow::~GameWindow()
 
 void GameWindow::on_changeButton_clicked()
 {
+    initPlayer(player);
+    initPlayer(playerPC1);
+
     fillCards(&cards[0]);
     QString s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14;
     ui->checkLabel->setText(s0.setNum(cards[0]) + " " + s1.setNum(cards[1]) + " " + s2.setNum(cards[2]) + " " + s3.setNum(cards[3]) + " " + s4.setNum(cards[4]) + "\n" +
