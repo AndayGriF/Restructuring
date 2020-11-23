@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>910</width>
+    <width>903</width>
     <height>619</height>
    </rect>
   </property>
@@ -20,36 +20,36 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>469</x>
-      <y>450</y>
+      <x>318</x>
+      <y>440</y>
       <width>131</width>
       <height>101</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>Перестройка</string>
     </property>
    </widget>
    <widget class="QPushButton" name="card2Button">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>450</y>
-      <width>141</width>
+      <x>455</x>
+      <y>440</y>
+      <width>131</width>
       <height>101</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>Перестройка</string>
     </property>
    </widget>
    <widget class="QPushButton" name="changeButton">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>510</y>
+      <x>820</x>
+      <y>220</y>
       <width>80</width>
-      <height>21</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="text">
@@ -59,21 +59,24 @@
    <widget class="QLabel" name="checkLabel">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>150</y>
-      <width>191</width>
-      <height>141</height>
+      <x>830</x>
+      <y>160</y>
+      <width>61</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="textMoney">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>560</y>
+      <x>410</x>
+      <y>550</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -85,14 +88,105 @@
    <widget class="QLabel" name="moneyLabel">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>560</y>
+      <x>490</x>
+      <y>550</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="card1PCLabel">
+    <property name="geometry">
+     <rect>
+      <x>318</x>
+      <y>40</y>
+      <width>131</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Перестройка</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="card2PCLabel">
+    <property name="geometry">
+     <rect>
+      <x>455</x>
+      <y>40</y>
+      <width>131</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Перестройка</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textMoneyPC">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>0</y>
       <width>71</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
+     <string>Кол-во монет:  </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="moneyPCLabel">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>0</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
      <string>2</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="statusPCText">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>30</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
@@ -101,8 +195,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>910</width>
-     <height>21</height>
+     <width>903</width>
+     <height>20</height>
     </rect>
    </property>
   </widget>

@@ -2,6 +2,7 @@
 #define GAMEWINDOW_H
 
 #include <iostream>
+#include <stdio.h>
 #include <QMainWindow>
 #include <QMessageBox>
 
@@ -19,6 +20,8 @@ private slots:
     void on_changeButton_clicked();
 
     void on_card1Button_clicked();
+
+    void on_card2Button_clicked();
 
 private:
     Ui::GameWindow *ui;
