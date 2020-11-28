@@ -20,10 +20,10 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>318</x>
-      <y>440</y>
+      <x>10</x>
+      <y>430</y>
       <width>131</width>
-      <height>101</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="text">
@@ -33,10 +33,10 @@
    <widget class="QPushButton" name="card2Button">
     <property name="geometry">
      <rect>
-      <x>455</x>
-      <y>440</y>
+      <x>150</x>
+      <y>430</y>
       <width>131</width>
-      <height>101</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="text">
@@ -76,8 +76,8 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>550</y>
-      <width>71</width>
+      <y>560</y>
+      <width>101</width>
       <height>16</height>
      </rect>
     </property>
@@ -89,7 +89,7 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>550</y>
+      <y>560</y>
       <width>31</width>
       <height>16</height>
      </rect>
@@ -107,9 +107,9 @@
     <property name="geometry">
      <rect>
       <x>318</x>
-      <y>40</y>
+      <y>30</y>
       <width>131</width>
-      <height>101</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="text">
@@ -123,9 +123,9 @@
     <property name="geometry">
      <rect>
       <x>455</x>
-      <y>40</y>
+      <y>30</y>
       <width>131</width>
-      <height>101</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="text">
@@ -140,7 +140,7 @@
      <rect>
       <x>410</x>
       <y>0</y>
-      <width>71</width>
+      <width>101</width>
       <height>16</height>
      </rect>
     </property>
@@ -189,6 +189,197 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="greenButton">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>490</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Предприниматель</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="yellowButton">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>520</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Телеведущий</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="redButton">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>490</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Бюрократ</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="blueButton">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>520</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Киллер</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="reactButton">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>450</y>
+      <width>221</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Диссидент</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="money1Button">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>510</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Взять 1 монету</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="restructButton">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>510</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Перестройка</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="checkButton">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>440</y>
+      <width>271</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ПРОВЕРИТЬ</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="deathCard1Label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>540</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="deathCard2Label">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>540</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="deathCardPC1Label">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>30</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="deathCardPC2Label">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>30</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <zorder>deathCardPC2Label</zorder>
+   <zorder>deathCardPC1Label</zorder>
+   <zorder>deathCard2Label</zorder>
+   <zorder>deathCard1Label</zorder>
+   <zorder>card1Button</zorder>
+   <zorder>card2Button</zorder>
+   <zorder>changeButton</zorder>
+   <zorder>checkLabel</zorder>
+   <zorder>textMoney</zorder>
+   <zorder>moneyLabel</zorder>
+   <zorder>card1PCLabel</zorder>
+   <zorder>card2PCLabel</zorder>
+   <zorder>textMoneyPC</zorder>
+   <zorder>moneyPCLabel</zorder>
+   <zorder>statusPCText</zorder>
+   <zorder>greenButton</zorder>
+   <zorder>yellowButton</zorder>
+   <zorder>redButton</zorder>
+   <zorder>blueButton</zorder>
+   <zorder>reactButton</zorder>
+   <zorder>money1Button</zorder>
+   <zorder>restructButton</zorder>
+   <zorder>checkButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -196,7 +387,7 @@
      <x>0</x>
      <y>0</y>
      <width>903</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
