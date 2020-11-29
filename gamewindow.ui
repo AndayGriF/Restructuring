@@ -357,6 +357,58 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="card1TVButton">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>300</y>
+      <width>101</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="card2TVButton">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>300</y>
+      <width>101</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="card3TVButton">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>300</y>
+      <width>101</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="returnToDeckButton">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>420</y>
+      <width>101</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Вернуть в колоду</string>
+    </property>
+   </widget>
    <zorder>deathCardPC2Label</zorder>
    <zorder>deathCardPC1Label</zorder>
    <zorder>deathCard2Label</zorder>
@@ -380,6 +432,10 @@
    <zorder>money1Button</zorder>
    <zorder>restructButton</zorder>
    <zorder>checkButton</zorder>
+   <zorder>card1TVButton</zorder>
+   <zorder>card2TVButton</zorder>
+   <zorder>card3TVButton</zorder>
+   <zorder>returnToDeckButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

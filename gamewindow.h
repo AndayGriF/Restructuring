@@ -54,6 +54,8 @@ private slots:
 
     void on_checkButton_clicked();
 
+    void on_returnToDeckButton_clicked();
+
 private:
     Ui::GameWindow *ui;
 };

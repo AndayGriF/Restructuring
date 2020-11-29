@@ -6,6 +6,7 @@ static int cards[15]; //Колода карт
 QString typeCardPlayer;
 int statusPC = 0;     //0 - ожидание или ход, 1 - проверка или нападение
 QString lastUseCard;
+bool statusPresentTV = false;
 
 void initPlayer(Player *player)
 {
@@ -350,6 +351,10 @@ GameWindow::GameWindow(QWidget *parent) :
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
+    ui->card1TVButton->setVisible(false);
+    ui->card2TVButton->setVisible(false);
+    ui->card3TVButton->setVisible(false);
+    ui->returnToDeckButton->setVisible(false);
     initPlayer(player);
     initPlayer(playerPC);
     fillCards(&cards[0]);
@@ -561,39 +566,11 @@ void GameWindow::on_greenButton_clicked()
 
 void GameWindow::on_reactButton_clicked()
 {
-    if (statusPC != 1)
-    {
-        QMessageBox::critical(this, "Предупреждение", "Нельзя ходить картой реакции!");
-        return;
-    }
     typeCardPlayer = "Диссидент";
     lastUseCard = typeCardPlayer;
     ui->reactButton->setEnabled(false);
     return;
 }
-
-/*
-    if ((typeCardPlayer == "Киллер") && (player->money < 4))
-    {
-        QMessageBox::critical(this, "Предупреждение", "У вас недостаточно монет!\nДля использования Киллера необходимо заплатить 4 монеты!");
-        return;
-    }
-    if ((typeCardPlayer == "Телеведущий") && (player->money < 1))
-    {
-        QMessageBox::critical(this, "Предупреждение", "У вас недостаточно монет!\nДля использования Телеведущего необходимо заплатить 1 монету!");
-        return;
-    }
-
-    if (checkingPC())
-    {
-        ui->statusPCText->setText("ПРОВЕРЯЮ!");
-    }
-    else
-    {
-        cardMoney(typeCardPlayer, player);
-        ui->moneyLabel->setText(str.setNum(player->money));
-    }
-*/
 
 void GameWindow::on_redButton_clicked()
 {
@@ -618,7 +595,28 @@ void GameWindow::on_redButton_clicked()
 
 void GameWindow::on_yellowButton_clicked()
 {
-
+    QString str;
+    typeCardPlayer = "Телеведущий";
+    lastUseCard = typeCardPlayer;
+    statusPresentTV = true;
+    if (checkingPC())
+    {
+        ui->statusPCText->setText("ПРОВЕРЯЮ!");
+        enabledAct();
+        return;
+    }
+    else
+    {
+        cardMoney(typeCardPlayer, playerPC, player);
+        ui->moneyLabel->setText(str.setNum(player->money));
+        ui->moneyPCLabel->setText(str.setNum(playerPC->money));
+        ui->card1TVButton->setVisible(true);
+        ui->card2TVButton->setVisible(true);
+        ui->card3TVButton->setVisible(true);
+        ui->returnToDeckButton->setVisible(true);
+        enabledAct();
+        //Ход компьютера
+    }
 }
 
 void GameWindow::on_blueButton_clicked()
@@ -652,4 +650,13 @@ void GameWindow::on_restructButton_clicked()
 void GameWindow::on_checkButton_clicked()
 {
 
+}
+
+void GameWindow::on_returnToDeckButton_clicked()
+{
+    statusPresentTV = false;
+    ui->card1TVButton->setVisible(false);
+    ui->card2TVButton->setVisible(false);
+    ui->card3TVButton->setVisible(false);
+    ui->returnToDeckButton->setVisible(false);
 }
