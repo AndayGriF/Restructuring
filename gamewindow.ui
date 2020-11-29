@@ -48,8 +48,8 @@
      <rect>
       <x>820</x>
       <y>220</y>
-      <width>80</width>
-      <height>71</height>
+      <width>71</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -59,10 +59,10 @@
    <widget class="QLabel" name="checkLabel">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>160</y>
-      <width>61</width>
-      <height>51</height>
+      <x>820</x>
+      <y>150</y>
+      <width>71</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -172,9 +172,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>30</y>
-      <width>131</width>
+      <x>10</x>
+      <y>90</y>
+      <width>281</width>
       <height>41</height>
      </rect>
     </property>
@@ -187,6 +187,9 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="greenButton">
@@ -258,9 +261,9 @@
     <property name="geometry">
      <rect>
       <x>620</x>
-      <y>510</y>
+      <y>540</y>
       <width>131</width>
-      <height>41</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -271,9 +274,9 @@
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>510</y>
+      <y>540</y>
       <width>131</width>
-      <height>41</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -284,9 +287,9 @@
     <property name="geometry">
      <rect>
       <x>620</x>
-      <y>440</y>
+      <y>430</y>
       <width>271</width>
-      <height>61</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -361,7 +364,7 @@
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>300</y>
+      <y>290</y>
       <width>101</width>
       <height>111</height>
      </rect>
@@ -374,7 +377,7 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>300</y>
+      <y>290</y>
       <width>101</width>
       <height>111</height>
      </rect>
@@ -387,7 +390,7 @@
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>300</y>
+      <y>290</y>
       <width>101</width>
       <height>111</height>
      </rect>
@@ -400,13 +403,26 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>420</y>
+      <y>410</y>
       <width>101</width>
-      <height>23</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Вернуть в колоду</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="not_checkButton">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>480</y>
+      <width>271</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>НЕ ПРОВЕРЯТЬ</string>
     </property>
    </widget>
    <zorder>deathCardPC2Label</zorder>
@@ -436,6 +452,7 @@
    <zorder>card2TVButton</zorder>
    <zorder>card3TVButton</zorder>
    <zorder>returnToDeckButton</zorder>
+   <zorder>not_checkButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -443,7 +460,7 @@
      <x>0</x>
      <y>0</y>
      <width>903</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
