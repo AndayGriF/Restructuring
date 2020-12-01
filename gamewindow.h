@@ -29,7 +29,7 @@ private slots:
 
     void cardMoney(QString typeCard, Player *playerFrom, Player *playerTo);
 
-    void dropCardPC();
+    bool dropCardPC();
 
     void enabledAct();
 
@@ -39,9 +39,9 @@ private slots:
 
     void computerRun();
 
-    void useDissedentPC(bool Diss);
+    bool useDissedentPC();
 
-    void useKillerPC(bool isKiller);
+    bool useKillerPC();
 
     void on_changeButton_clicked();
 

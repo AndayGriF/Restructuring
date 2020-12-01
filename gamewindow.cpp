@@ -3,19 +3,19 @@
 #include "random.h"
 
 static int cards[15]; //Колода карт
-QString lastUseCard;
+static QString lastUseCard;
 
-Player *player = (Player*) malloc(sizeof(Player));
-QString typeCardPlayer;
-bool statusPresentTV = false;
-bool isFirstCardToExchange = false; //Имеется ли карта для замены
-int firstCardToExchange; //Индекс карты которая будет менятся
+static Player *player = (Player*) malloc(sizeof(Player));
+static QString typeCardPlayer;
+static bool statusPresentTV = false;
+static bool isFirstCardToExchange = false; //Имеется ли карта для замены
+static int firstCardToExchange; //Индекс карты которая будет менятся
 
-Player *playerPC = (Player*) malloc(sizeof(Player));
-QString typeCardPC1;
-QString typeCardPC2;
-int statusPC = 0; //0 - ожидание, 1 - проверка или сделать ход действием "перестройка", 2 - использование карты
-bool isDropCardBlef = false;
+static Player *playerPC = (Player*) malloc(sizeof(Player));
+static QString typeCardPC1;
+static QString typeCardPC2;
+static int statusPC = 0; //0 - ожидание, 1 - проверка или сделать ход действием "перестройка", 2 - использование карты
+static bool isDropCardBlef = false;
 
 void initPlayer(Player *player)
 {
@@ -44,7 +44,7 @@ void fillCards(int *cards)  //Заполнение колоды
     int i = 0;
     do
     {
-       num = Random(0, 4);
+       num = static_cast<int>(Random(0, 4));
        if (num == 0 && endPred != 3)
        {
            endPred++;
@@ -283,7 +283,7 @@ void GameWindow::enabledAct()
     }
 }
 
-void GameWindow::useDissedentPC(bool isDiss)
+bool GameWindow::useDissedentPC()
 {
     QString str;
     if (typeCardPC1 == "Диссидент")
@@ -298,7 +298,7 @@ void GameWindow::useDissedentPC(bool isDiss)
         ui->card1PCLabel->setGeometry(318,70,131,141);
         ui->card1PCLabel->setEnabled(false);
         ui->deathCardPC1Label->setText("Мертвая карта");
-        return;
+        return true;
     }
     if (typeCardPC2 == "Диссидент")
     {
@@ -312,9 +312,10 @@ void GameWindow::useDissedentPC(bool isDiss)
         ui->card2PCLabel->setGeometry(455,70,131,141);
         ui->card2PCLabel->setEnabled(false);
         ui->deathCardPC2Label->setText("Мертвая карта");
-        return;
+        return true;
     }
-    int isCard = Random(1,2);
+    int isCard = static_cast<int>(Random(1,2));
+    int isDiss = static_cast<int>(Random(0, 1));
     if (isDiss)
     {
         if (isCard == 1)
@@ -329,7 +330,7 @@ void GameWindow::useDissedentPC(bool isDiss)
             ui->card1PCLabel->setGeometry(318,70,131,141);
             ui->card1PCLabel->setEnabled(false);
             ui->deathCardPC1Label->setText("Мертвая карта");
-            return;
+            return true;
         }
         if (isCard == 2)
         {
@@ -343,7 +344,7 @@ void GameWindow::useDissedentPC(bool isDiss)
             ui->card2PCLabel->setGeometry(455,70,131,141);
             ui->card2PCLabel->setEnabled(false);
             ui->deathCardPC2Label->setText("Мертвая карта");
-            return;
+            return true;
         }
     }
     else
@@ -357,7 +358,7 @@ void GameWindow::useDissedentPC(bool isDiss)
             ui->card1PCLabel->setEnabled(false);
             ui->deathCardPC1Label->setText("Мертвая карта");
             //Переворачивание карты
-            return;
+            return false;
         }
         if (isCard == 2)
         {
@@ -368,12 +369,12 @@ void GameWindow::useDissedentPC(bool isDiss)
             ui->card2PCLabel->setEnabled(false);
             ui->deathCardPC2Label->setText("Мертвая карта");
             //Переворачивание карты
-            return;
+            return false;
         }
     }
 }
 
-void GameWindow::useKillerPC(bool isKiller)
+bool GameWindow::useKillerPC()
 {
     if (typeCardPC1 == "Киллер")
     {
@@ -381,7 +382,7 @@ void GameWindow::useKillerPC(bool isKiller)
         ui->statusPCText->setText("БЛОКИРУЮ!");
         statusPC = 2;
         enabledAct();
-        return;
+        return true;
     }
     if (typeCardPC2 == "Киллер")
     {
@@ -389,9 +390,10 @@ void GameWindow::useKillerPC(bool isKiller)
         ui->statusPCText->setText("БЛОКИРУЮ!");
         statusPC = 2;
         enabledAct();
-        return;
+        return true;
     }
-    int isCard = Random(1,2);
+    int isCard = static_cast<int>(Random(1,2));
+    int isKiller = static_cast<int>(Random(1,2));
     if (isKiller)
     {
         if (isCard == 1)
@@ -400,7 +402,7 @@ void GameWindow::useKillerPC(bool isKiller)
             ui->statusPCText->setText("БЛОКИРУЮ!");
             statusPC = 2;
             enabledAct();
-            return;
+            return true;
         }
         if (isCard == 2)
         {
@@ -408,52 +410,70 @@ void GameWindow::useKillerPC(bool isKiller)
             ui->statusPCText->setText("БЛОКИРУЮ!");
             statusPC = 2;
             enabledAct();
-            return;
+            return true;
         }
     }
     else
     {
-        return;
+        if (isCard == 1)
+        {
+            ui->statusPCText->setText("");
+            statusPC = 0;
+            playerPC->count_card--;
+            ui->card1PCLabel->setGeometry(318,70,131,141);
+            ui->card1PCLabel->setEnabled(false);
+            ui->deathCardPC1Label->setText("Мертвая карта");
+            //Переворачивание карты
+            return false;
+        }
+        if (isCard == 2)
+        {
+            ui->statusPCText->setText("");
+            statusPC = 0;
+            playerPC->count_card--;
+            ui->card2PCLabel->setGeometry(455,70,131,141);
+            ui->card2PCLabel->setEnabled(false);
+            ui->deathCardPC2Label->setText("Мертвая карта");
+            //Переворачивание карты
+            return false;
+        }
     }
 }
 
-void GameWindow::dropCardPC()
+bool GameWindow::dropCardPC() //Если просто теряет карту возвращается FALSE, иначе TRUE
 {
     DefRandom();
     typeCardPC1 = ui->card1PCLabel->text();
     typeCardPC2 = ui->card2PCLabel->text();
     QString str;
-    int isDiss = Random(0,1);
     if (playerPC->count_card == 2)
     {
         if (isDropCardBlef)
         {
-            useDissedentPC(isDiss);
-            return;
+            if (useDissedentPC()) return true;
+            return false;
         }
         if ((lastUseCard == "Киллер") && (isDropCardBlef == false))
         {
-            int isKiller = Random(0,1);
-            useKillerPC(isKiller);
-            if (isKiller) return;
+            if (useKillerPC()) return true;
             else
             {
-                useDissedentPC(isDiss);
-                return;
+                if (useDissedentPC()) return true;
+                return false;
             }
         }
-        useDissedentPC(isDiss);
-        return;
+        if (useDissedentPC()) return true;
+        return false;
     }
     if (playerPC->count_card == 1)
     {
         if ((lastUseCard == "Киллер") && (isDropCardBlef == false))
         {
-            int isKiller = Random(0,1);
+            int isKiller = static_cast<int>(Random(0,1));
             if (isKiller)
             {
-                useKillerPC(isKiller);
-                return;
+                if (useKillerPC()) return true;
+                return false;
             }
         }
         if (ui->card1PCLabel->isEnabled())
@@ -464,7 +484,7 @@ void GameWindow::dropCardPC()
             ui->card1PCLabel->setGeometry(318,70,131,141);
             ui->card1PCLabel->setEnabled(false);
             ui->deathCardPC1Label->setText("Мертвая карта");
-            return;
+            return false;
         }
         else
         {
@@ -474,21 +494,59 @@ void GameWindow::dropCardPC()
             ui->card2PCLabel->setGeometry(455,70,131,141);
             ui->card2PCLabel->setEnabled(false);
             ui->deathCardPC2Label->setText("Мертвая карта");
-            return;
+            return false;
         }
     }
+    return true;
 }
 
 void GameWindow::cardActionPC(QString typeCard)
 {
-    return;
+    QString str;
+    lastUseCard = typeCard;
+    if (typeCard == "Предприниматель")
+    {
+        cardMoney(typeCard, player, playerPC);
+        ui->moneyPCLabel->setText(str.setNum(playerPC->money));
+        statusPC = 2;
+        enabledAct();
+        return;
+    }
+    if (typeCard == "Киллер")
+    {
+        cardMoney(typeCard, player, playerPC);
+        ui->moneyPCLabel->setText(str.setNum(playerPC->money));
+        statusPC = 2;
+        enabledAct();
+        ui->blueButton->setEnabled(true);
+        return;
+    }
+    if (typeCard == "Телеведущий")
+    {
+        cardMoney(typeCard, player, playerPC);
+        ui->moneyPCLabel->setText(str.setNum(playerPC->money));
+        statusPC = 2;
+        enabledAct();
+        return;
+    }
+    if (typeCard == "Бюрократ")
+    {
+        cardMoney(typeCard, player, playerPC);
+        ui->moneyPCLabel->setText(str.setNum(playerPC->money));
+        ui->moneyLabel->setText(str.setNum(player->money));
+        statusPC = 2;
+        enabledAct();
+        return;
+    }
 }
 
 void GameWindow::computerRun()
 {
+    if (playerPC->count_card < 1) return;
     DefRandom();
     QString str;
-    int isBlef = Random(0,1);
+    int isBlef = static_cast<int>(Random(0,1));
+    int isCard;
     if (playerPC->money >= 10)
     {
         ui->statusPCText->setText("Перестройка");
@@ -500,7 +558,10 @@ void GameWindow::computerRun()
     }
     if (isBlef)
     {
-        //Выбирает карту которой будет ходить
+        //isCard = static_cast<int>(Random(0,3));
+        isCard = 1;
+        cardActionPC(cardFromIntToStr(isCard));
+        ui->statusPCText->setText(cardFromIntToStr(isCard));
         return;
     }
     else
@@ -527,8 +588,8 @@ QString cardColor(int cards)
 bool checkingPC()
 {
     int check1 = 0, check2 = 0;
-    check1 = Random(0, 1);
-    check2 = Random(0, 1);
+    check1 = static_cast<int>(Random(0,1));
+    check2 = static_cast<int>(Random(0,1));
     if (check1 + check2 == 2)
     {
         statusPC = 1;
@@ -551,7 +612,7 @@ void GameWindow::cardActionPlayer(QString typeCard) //Действия карт 
     {
         cardMoney(typeCard, playerPC, player);
         ui->moneyLabel->setText(str.setNum(player->money));
-        dropCardPC();
+        isDropCardBlef = false;
         return;
     }
     if (typeCard == "Телеведущий")
@@ -665,7 +726,7 @@ void GameWindow::on_card1Button_clicked()
         }
         else if (lastUseCard == "Диссидент")
         {
-            ui->card1Button->setGeometry(10,390,131,141);
+            ui->card1Button->setGeometry(ui->card1Button->x(), ui->card1Button->y() - 40, ui->card1Button->width(), ui->card1Button->height());
             ui->card1Button->setEnabled(false);
             ui->deathCard1Label->setText("Мертвый\nДиссидент");
             player->count_card--;
@@ -686,7 +747,7 @@ void GameWindow::on_card1Button_clicked()
                 else
                 {
                     ui->deathCard1Label->setText("Мертвая карта");
-                    ui->card2Button->setGeometry(150,390,131,141);
+                    ui->card2Button->setGeometry(ui->card2Button->x(), ui->card2Button->y() - 40, ui->card2Button->width(), ui->card2Button->height());
                     ui->card2Button->setEnabled(false);
                     ui->deathCard2Label->setText("Мертвая карта");
                     player->count_card--;
@@ -706,7 +767,7 @@ void GameWindow::on_card1Button_clicked()
         }
         else
         {
-            ui->card1Button->setGeometry(10,390,131,141);
+            ui->card1Button->setGeometry(ui->card1Button->x(), ui->card1Button->y() - 40, ui->card1Button->width(), ui->card1Button->height());
             ui->card1Button->setEnabled(false);
             ui->deathCard1Label->setText("Мертвая карта");
             player->count_card--;
@@ -780,7 +841,7 @@ void GameWindow::on_card2Button_clicked()
         }
         else if (lastUseCard == "Диссидент")
         {
-            ui->card2Button->setGeometry(150,390,131,141);
+            ui->card2Button->setGeometry(ui->card2Button->x(), ui->card2Button->y() - 40, ui->card2Button->width(), ui->card2Button->height());
             ui->card2Button->setEnabled(false);
             ui->deathCard2Label->setText("Мертвый\nДиссидент");
             player->count_card--;
@@ -801,7 +862,7 @@ void GameWindow::on_card2Button_clicked()
                 else
                 {
                     ui->deathCard2Label->setText("Мертвая карта");
-                    ui->card1Button->setGeometry(10,390,131,141);
+                    ui->card1Button->setGeometry(ui->card1Button->x(), ui->card1Button->y() - 40, ui->card1Button->width(), ui->card1Button->height());
                     ui->card1Button->setEnabled(false);
                     ui->deathCard1Label->setText("Мертвая карта");
                     player->count_card--;
@@ -821,7 +882,7 @@ void GameWindow::on_card2Button_clicked()
         }
         else
         {
-            ui->card2Button->setGeometry(150,390,131,141);
+            ui->card2Button->setGeometry(ui->card2Button->x(), ui->card2Button->y() - 40, ui->card2Button->width(), ui->card2Button->height());
             ui->card2Button->setEnabled(false);
             ui->deathCard2Label->setText("Мертвая карта");
             player->count_card--;
@@ -947,7 +1008,6 @@ void GameWindow::on_yellowButton_clicked()
         isFirstCardToExchange = false;
         cardActionPlayer(typeCardPlayer);
         enabledAct();
-        computerRun();
     }
 }
 
@@ -956,11 +1016,29 @@ void GameWindow::on_blueButton_clicked()
     QString str;
     typeCardPlayer = "Киллер";
     lastUseCard = typeCardPlayer;
+    if ((statusPC == 2) && (ui->statusPCText->text() == "Киллер"))
+    {
+        statusPC = 0;
+        if (checkingPC())
+        {
+            ui->statusPCText->setText("ПРОВЕРЯЮ!");
+            isDropCardBlef = true;
+            enabledAct();
+            ui->reactButton->setEnabled(false);
+        }
+        else
+        {
+            isDropCardBlef = false;
+            enabledAct();
+            return;
+        }
+    }
     if (checkingPC())
     {
         ui->statusPCText->setText("ПРОВЕРЯЮ!");
         isDropCardBlef = true;
         enabledAct();
+        ui->reactButton->setEnabled(false);
         return;
     }
     else
@@ -968,7 +1046,13 @@ void GameWindow::on_blueButton_clicked()
         isFirstCardToExchange = false;
         cardActionPlayer(typeCardPlayer);
         enabledAct();
-        computerRun();
+        if (dropCardPC())
+        {
+            statusPC == 2;
+            enabledAct();
+            return;
+        }
+        else computerRun();
     }
 }
 
@@ -1026,6 +1110,7 @@ void GameWindow::on_returnToDeckButton_clicked()
 void GameWindow::on_not_checkButton_clicked()
 {
     statusPC = 0;
+    if (ui->statusPCText->text() == "БЛОКИРУЮ!") computerRun();
     ui->statusPCText->setText("");
     if (typeCardPlayer == "Телеведущий")
         cardActionPlayer(typeCardPlayer);
