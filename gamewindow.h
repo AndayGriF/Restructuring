@@ -29,19 +29,27 @@ private slots:
 
     void cardMoney(QString typeCard, Player *playerFrom, Player *playerTo);
 
-    bool dropCardPC();
+    void dropCardPC();
 
     void enabledAct();
 
     void cardActionPlayer(QString typeCard);
 
-    void cardActionPC(QString typeCard);
+    int checkCardPC(QString typeCard);
 
     void computerRun();
 
-    bool useDissedentPC();
+    bool useEndPredPC();
 
     bool useKillerPC();
+
+    bool usePresentTVPC();
+
+    bool useBurocratPC();
+
+    bool useDissedentPC();
+
+    void dropCardPlayer(int num_card);
 
     void on_changeButton_clicked();
 
