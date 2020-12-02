@@ -37,7 +37,7 @@ private slots:
 
     int checkCardPC(QString typeCard);
 
-    void computerRun();
+    void computerRun(bool isRun);
 
     bool useEndPredPC();
 
