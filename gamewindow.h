@@ -39,6 +39,8 @@ private slots:
 
     void computerRun(bool isRun);
 
+    void computerCardRun(int isCard);
+
     bool useEndPredPC();
 
     bool useKillerPC();
@@ -48,6 +50,8 @@ private slots:
     bool useBurocratPC();
 
     bool useDissedentPC();
+
+    void swapCardPC();
 
     void dropCardPlayer(int num_card);
 

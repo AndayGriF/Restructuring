@@ -21,9 +21,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>430</y>
+      <y>420</y>
       <width>141</width>
-      <height>141</height>
+      <height>151</height>
      </rect>
     </property>
     <property name="text">
@@ -34,9 +34,9 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>430</y>
+      <y>420</y>
       <width>141</width>
-      <height>141</height>
+      <height>151</height>
      </rect>
     </property>
     <property name="text">
@@ -53,7 +53,8 @@
      </rect>
     </property>
     <property name="text">
-     <string>Поменять</string>
+     <string>Начать
+сначала</string>
     </property>
    </widget>
    <widget class="QLabel" name="checkLabel">
@@ -106,9 +107,9 @@
    <widget class="QLabel" name="card1PCLabel">
     <property name="geometry">
      <rect>
-      <x>318</x>
-      <y>30</y>
-      <width>131</width>
+      <x>315</x>
+      <y>10</y>
+      <width>141</width>
       <height>151</height>
      </rect>
     </property>
@@ -122,9 +123,9 @@
    <widget class="QLabel" name="card2PCLabel">
     <property name="geometry">
      <rect>
-      <x>455</x>
-      <y>30</y>
-      <width>131</width>
+      <x>465</x>
+      <y>10</y>
+      <width>141</width>
       <height>151</height>
      </rect>
     </property>
@@ -138,8 +139,8 @@
    <widget class="QLabel" name="textMoneyPC">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>0</y>
+      <x>630</x>
+      <y>10</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -151,8 +152,8 @@
    <widget class="QLabel" name="moneyPCLabel">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>0</y>
+      <x>670</x>
+      <y>30</y>
       <width>31</width>
       <height>16</height>
      </rect>
@@ -331,9 +332,9 @@
    <widget class="QLabel" name="deathCardPC1Label">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>30</y>
-      <width>111</width>
+      <x>315</x>
+      <y>10</y>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
@@ -347,9 +348,9 @@
    <widget class="QLabel" name="deathCardPC2Label">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>30</y>
-      <width>121</width>
+      <x>465</x>
+      <y>10</y>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
@@ -469,17 +470,17 @@
    <zorder>returnToDeckButton</zorder>
    <zorder>not_checkButton</zorder>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>903</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="action">
+   <property name="text">
+    <string>Начать заново</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

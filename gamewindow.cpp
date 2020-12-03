@@ -20,7 +20,30 @@ static int statusPC = 0;    //  0 - ожидание,
                             //  2 - использование карты,
                             //  3 - использование карты киллера
                             //  41, 42 - проверка мертвого диссидента 1 и 2 карты
-bool isPCRUN;
+static bool isPCRUN;
+
+bool checkingPC()
+{
+    int check1 = 0, check2 = 0;
+    check1 = static_cast<int>(Random(0,1));
+    check2 = static_cast<int>(Random(0,1));
+    if (check1 + check2 == 2)
+    {
+        statusPC = 1;
+        return true;
+    }
+    statusPC = 0;
+    return false;
+}
+
+bool isCanUseCardPC (int typeCard)
+{
+    if (typeCard == 0) return true;
+    if ((typeCard == 1) && (playerPC->money >= 4)) return true;
+    if ((typeCard == 2) && (playerPC->money >= 1)) return true;
+    if (typeCard == 3) return true;
+    return false;
+}
 
 void initPlayer(Player *player)
 {
@@ -399,6 +422,35 @@ bool GameWindow::usePresentTVPC()
     lastActPC = "Телеведущий";
     cardMoney(lastActPC, player, playerPC);
     ui->moneyPCLabel->setText(str.setNum(playerPC->money));
+    unsigned int isChange = Random(0,1);
+    if (isChange)
+    {
+        unsigned int isCardTV;
+        if (playerPC->count_card == 2)
+        {
+            isCardTV = Random(4,6);
+            swapCards(&cards[2], &cards[isCardTV]);
+            ui->card1PCLabel->setText(cardFromIntToStr(cards[2]));
+            isCardTV = Random(4,6);
+            swapCards(&cards[3], &cards[isCardTV]);
+            ui->card2PCLabel->setText(cardFromIntToStr(cards[3]));
+        }
+        if (playerPC->count_card == 1)
+        {
+            if (ui->card1PCLabel->isEnabled())
+            {
+                isCardTV = Random(4,6);
+                swapCards(&cards[2], &cards[isCardTV]);
+                ui->card1PCLabel->setText(cardFromIntToStr(cards[2]));
+            }
+            if (ui->card2PCLabel->isEnabled())
+            {
+                isCardTV = Random(4,6);
+                swapCards(&cards[3], &cards[isCardTV]);
+                ui->card2PCLabel->setText(cardFromIntToStr(cards[3]));
+            }
+        }
+    }
     int tv1 = cards[4], tv2 = cards[5], tv3 = cards[6];
     for(int i = 4, j = 7; j < 15; i++, j++)
         swapCards(&cards[i], &cards[j]);
@@ -487,6 +539,18 @@ bool GameWindow::useDissedentPC()
     return false;
 }
 
+void GameWindow::swapCardPC()
+{
+    if (playerPC->count_card != 2) return;
+    unsigned int isChange = Random(0,1);
+    if (isChange)
+    {
+        swapCards(&cards[2], &cards[3]);
+        ui->card1PCLabel->setText(cardFromIntToStr(cards[2]));
+        ui->card2PCLabel->setText(cardFromIntToStr(cards[3]));
+    }
+}
+
 void GameWindow::dropCardPC()
 {
     QString str;
@@ -555,8 +619,45 @@ void GameWindow::dropCardPC()
     }
 }
 
+void GameWindow::computerCardRun(int isCard)
+{
+    if (isCard == 0)
+    {
+        ui->statusPCText->setText(cardFromIntToStr(isCard));
+        lastActPC = "Предприниматель";
+        statusPC = 2;
+        enabledAct();
+        return;
+    }
+    if (isCard == 1)
+    {
+        ui->statusPCText->setText(cardFromIntToStr(isCard));
+        lastActPC = "Киллер";
+        statusPC = 3;
+        enabledAct();
+        return;
+    }
+    if (isCard == 2)
+    {
+        ui->statusPCText->setText(cardFromIntToStr(isCard));
+        lastActPC = "Телеведущий";
+        statusPC = 2;
+        enabledAct();
+        return;
+    }
+    if (isCard == 3)
+    {
+        ui->statusPCText->setText(cardFromIntToStr(isCard));
+        lastActPC = "Бюрократ";
+        statusPC = 2;
+        enabledAct();
+        return;
+    }
+}
+
 void GameWindow::computerRun(bool isRun) //Ход компьютера
 {
+    if (playerPC->count_card < 1) return;
     if (isRun == false)
     {
         statusPC = 0;
@@ -566,13 +667,9 @@ void GameWindow::computerRun(bool isRun) //Ход компьютера
     isRun = false;
     typeCardPC1 = ui->card1PCLabel->text();
     typeCardPC2 = ui->card2PCLabel->text();
-    if (playerPC->count_card < 1) return;
     DefRandom();
     QString str;
-    //int isBlef = static_cast<int>(Random(0,1));
-    int isBlef = 1;
-    int isCard;
-    if (playerPC->money >= 10)
+    if (playerPC->money >= 7)
     {
         ui->statusPCText->setText("Перестройка");
         playerPC->money -= 7;
@@ -581,45 +678,46 @@ void GameWindow::computerRun(bool isRun) //Ход компьютера
         enabledAct();
         return;
     }
+    int isCard;
+    unsigned int isBlef = Random(0,1);
     if (isBlef)
     {
-        isCard = static_cast<int>(Random(0,3));
-        //isCard = 1;
-        if (isCard == 0)
+        do
         {
-            ui->statusPCText->setText(cardFromIntToStr(isCard));
-            lastActPC = "Предприниматель";
-            statusPC = 2;
-            enabledAct();
-            return;
-        }
-        if (isCard == 1)
-        {
-            ui->statusPCText->setText(cardFromIntToStr(isCard));
-            lastActPC = "Киллер";
-            statusPC = 3;
-            enabledAct();
-            return;
-        }
-        if (isCard == 2)
-        {
-            ui->statusPCText->setText(cardFromIntToStr(isCard));
-            lastActPC = "Телеведущий";
-            statusPC = 2;
-            enabledAct();
-            return;
-        }
-        if (isCard == 3)
-        {
-            ui->statusPCText->setText(cardFromIntToStr(isCard));
-            lastActPC = "Бюрократ";
-            statusPC = 2;
-            enabledAct();
-            return;
-        }
+            isCard = static_cast<int>(Random(0,3));
+        } while (isCanUseCardPC(isCard) == false);
+        computerCardRun(isCard);
+        return;
     }
     else
     {
+        isCard = static_cast<int>(Random(1,2));
+        if (isCard == 1)
+        {
+            if (ui->card1PCLabel->isEnabled() && isCanUseCardPC(cards[2]))
+            {
+                computerCardRun(cards[2]);
+                return;
+            }
+            if (ui->card2PCLabel->isEnabled() && isCanUseCardPC(cards[3]))
+            {
+                computerCardRun(cards[3]);
+                return;
+            }
+        }
+        if (isCard == 2)
+        {
+            if (ui->card2PCLabel->isEnabled() && isCanUseCardPC(cards[3]))
+            {
+                computerCardRun(cards[3]);
+                return;
+            }
+            if (ui->card1PCLabel->isEnabled() && isCanUseCardPC(cards[2]))
+            {
+                computerCardRun(cards[2]);
+                return;
+            }
+        }
         ui->statusPCText->setText("Возьму монетку");
         playerPC->money++;
         ui->moneyPCLabel->setText(str.setNum(playerPC->money));
@@ -645,20 +743,6 @@ int GameWindow::checkCardPC(QString typeCard)
     if ((ui->card1PCLabel->text() == typeCard) && (ui->card1PCLabel->isEnabled() == true)) return 1;
     if ((ui->card2PCLabel->text() == typeCard) && (ui->card2PCLabel->isEnabled() == true)) return 2;
     return 0;
-}
-
-bool checkingPC()
-{
-    int check1 = 0, check2 = 0;
-    check1 = static_cast<int>(Random(0,1));
-    check2 = static_cast<int>(Random(0,1));
-    if (check1 + check2 == 2)
-    {
-        statusPC = 1;
-        return true;
-    }
-    statusPC = 0;
-    return false;
 }
 
 void GameWindow::cardActionPlayer(QString typeCard) //Действия карт в виде сценария
@@ -728,6 +812,29 @@ GameWindow::GameWindow(QWidget *parent) :
     initPlayer(player);
     initPlayer(playerPC);
     fillCards(&cards[0]);
+    ui->checkLabel->setStyleSheet("border-style: solid;"
+                                  "border-width: 1px;"
+                                  "border-color: black;"
+                                  "background-color: white;");
+    ui->card1PCLabel->setStyleSheet("border-style: solid;"
+                                    "border-width: 3px;"
+                                    "border-color: black;"
+                                    "border-radius: 10px;");
+    ui->card2PCLabel->setStyleSheet("border-style: solid;"
+                                    "border-width: 3px;"
+                                    "border-color: black;"
+                                    "border-radius: 10px;");
+    QString s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, color;
+    ui->checkLabel->setText(s0.setNum(cards[0]) + " " + s1.setNum(cards[1]) + "\n" + s2.setNum(cards[2]) + " " + s3.setNum(cards[3]) + "\n" + s4.setNum(cards[4]) + " " +
+                            s5.setNum(cards[5]) + " " + s6.setNum(cards[6]) + " " + s7.setNum(cards[7]) + " " + s8.setNum(cards[8]) + " " + s9.setNum(cards[9]) + "\n" +
+                            s10.setNum(cards[10]) + " " + s11.setNum(cards[11]) + " " + s12.setNum(cards[12]) + " " + s13.setNum(cards[13]) + " " + s14.setNum(cards[14]));
+    ui->card1Button->setText(cardFromIntToStr(cards[0]));
+    ui->card1Button->setStyleSheet(cardColor(cards[0]));
+    ui->card2Button->setText(cardFromIntToStr(cards[1]));
+    ui->card2Button->setStyleSheet(cardColor(cards[1]));
+    ui->card1PCLabel->setText(cardFromIntToStr(cards[2]));
+    ui->card2PCLabel->setText(cardFromIntToStr(cards[3]));
+    enabledAct();
 }
 
 GameWindow::~GameWindow()
@@ -756,39 +863,37 @@ void GameWindow::dropCardPlayer(int num_card)
 
 void GameWindow::on_changeButton_clicked()
 {
-    enabledAct();
-    ui->statusPCText->setText("");
+    QString s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, str;
     fillCards(&cards[0]);
-
-    ui->checkLabel->setStyleSheet("border-style: solid;"
-                                  "border-width: 1px;"
-                                  "border-color: black;"
-                                  "background-color: white;");
-
-    ui->card1PCLabel->setStyleSheet("border-style: solid;"
-                                    "border-width: 3px;"
-                                    "border-color: black;"
-                                    "border-radius: 10px;");
-
-    ui->card2PCLabel->setStyleSheet("border-style: solid;"
-                                    "border-width: 3px;"
-                                    "border-color: black;"
-                                    "border-radius: 10px;");
-
-    QString s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, color;
-    ui->checkLabel->setText(s0.setNum(cards[0]) + " " + s1.setNum(cards[1]) + "\n" + s2.setNum(cards[2]) + " " + s3.setNum(cards[3]) + "\n" + s4.setNum(cards[4]) + " " +
-                            s5.setNum(cards[5]) + " " + s6.setNum(cards[6]) + " " + s7.setNum(cards[7]) + " " + s8.setNum(cards[8]) + " " + s9.setNum(cards[9]) + "\n" +
-                            s10.setNum(cards[10]) + " " + s11.setNum(cards[11]) + " " + s12.setNum(cards[12]) + " " + s13.setNum(cards[13]) + " " + s14.setNum(cards[14]));
-
+    initPlayer(player);
+    initPlayer(playerPC);
+    ui->statusPCText->setText("");
+    ui->card1Button->setEnabled(true);
+    ui->card2Button->setEnabled(true);
+    ui->card1PCLabel->setEnabled(true);
+    ui->card2PCLabel->setEnabled(true);
+    ui->card1Button->setGeometry(10,420,141,151);
+    ui->card2Button->setGeometry(160,420,141,151);
+    ui->card1PCLabel->setGeometry(315,10,141,151);
+    ui->card2PCLabel->setGeometry(465,10,141,151);
+    ui->deathCard1Label->setText("");
+    ui->deathCard2Label->setText("");
+    ui->deathCardPC1Label->setText("");
+    ui->deathCardPC2Label->setText("");
+    ui->moneyLabel->setText(str.setNum(player->money));
+    ui->moneyPCLabel->setText(str.setNum(playerPC->money));
     ui->card1Button->setText(cardFromIntToStr(cards[0]));
     ui->card1Button->setStyleSheet(cardColor(cards[0]));
     ui->card2Button->setText(cardFromIntToStr(cards[1]));
     ui->card2Button->setStyleSheet(cardColor(cards[1]));
-
     ui->card1PCLabel->setText(cardFromIntToStr(cards[2]));
-    //ui->card1PCLabel->setStyleSheet(cardColor(cards[2]));
     ui->card2PCLabel->setText(cardFromIntToStr(cards[3]));
-    //ui->card2PCLabel->setStyleSheet(cardColor(cards[3]));
+    ui->checkLabel->setText(s0.setNum(cards[0]) + " " + s1.setNum(cards[1]) + "\n" +
+                            s2.setNum(cards[2]) + " " + s3.setNum(cards[3]) + "\n" +
+                            s4.setNum(cards[4]) + " " + s5.setNum(cards[5]) + " " + s6.setNum(cards[6]) + " " + s7.setNum(cards[7]) + " " + s8.setNum(cards[8]) + " " + s9.setNum(cards[9]) + "\n" +
+                            s10.setNum(cards[10]) + " " + s11.setNum(cards[11]) + " " + s12.setNum(cards[12]) + " " + s13.setNum(cards[13]) + " " + s14.setNum(cards[14]));
+
+    enabledAct();
 }
 
 void GameWindow::on_card1Button_clicked()
@@ -1352,16 +1457,16 @@ void GameWindow::on_checkButton_clicked()
         if (checkCardPC(lastActPC) == 1)
         {
             //Переворачиваем 1-ую карту у ПК
-            statusPC = 1;
             usePresentTVPC();
+            statusPC = 1;
             enabledAct();
             return;
         }
         if (checkCardPC(lastActPC) == 2)
         {
             //Переворачиваем 2-ую карту у ПК
-            statusPC = 1;
             usePresentTVPC();
+            statusPC = 1;
             enabledAct();
             return;
         }
@@ -1378,16 +1483,16 @@ void GameWindow::on_checkButton_clicked()
         if (checkCardPC(lastActPC) == 1)
         {
             //Переворачиваем 1-ую карту у ПК
-            statusPC = 1;
             useBurocratPC();
+            statusPC = 1;
             enabledAct();
             return;
         }
         if (checkCardPC(lastActPC) == 2)
         {
             //Переворачиваем 2-ую карту у ПК
-            statusPC = 1;
             useBurocratPC();
+            statusPC = 1;
             enabledAct();
             return;
         }
