@@ -25,6 +25,8 @@ public:
 
 private slots:
 
+    void visibleShirtCard();
+
     void enabledButtons(bool b);
 
     void cardMoney(QString typeCard, Player *playerFrom, Player *playerTo);

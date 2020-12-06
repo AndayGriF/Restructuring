@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>GameWindow</class>
  <widget class="QMainWindow" name="GameWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -26,6 +29,11 @@
       <height>151</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
+    </property>
     <property name="text">
      <string>Перестройка</string>
     </property>
@@ -39,6 +47,11 @@
       <height>151</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
+    </property>
     <property name="text">
      <string>Перестройка</string>
     </property>
@@ -51,6 +64,11 @@
       <width>91</width>
       <height>71</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
     </property>
     <property name="text">
      <string>Начать
@@ -113,6 +131,11 @@
       <height>151</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
+    </property>
     <property name="text">
      <string>Перестройка</string>
     </property>
@@ -128,6 +151,11 @@
       <width>141</width>
       <height>151</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
     </property>
     <property name="text">
      <string>Перестройка</string>
@@ -202,6 +230,11 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
+    </property>
     <property name="text">
      <string>Предприниматель</string>
     </property>
@@ -214,6 +247,11 @@
       <width>141</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
     </property>
     <property name="text">
      <string>Телеведущий</string>
@@ -228,6 +266,11 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
+    </property>
     <property name="text">
      <string>Бюрократ</string>
     </property>
@@ -240,6 +283,11 @@
       <width>151</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
     </property>
     <property name="text">
      <string>Киллер</string>
@@ -254,6 +302,11 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
+    </property>
     <property name="text">
      <string>Диссидент</string>
     </property>
@@ -266,6 +319,11 @@
       <width>129</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
     </property>
     <property name="text">
      <string>Взять 1 монету</string>
@@ -280,6 +338,11 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
+    </property>
     <property name="text">
      <string>Перестройка</string>
     </property>
@@ -292,6 +355,11 @@
       <width>261</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
     </property>
     <property name="text">
      <string>ПРОВЕРИТЬ</string>
@@ -372,6 +440,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Nimbus Sans Narrow [urw]</family>
       <pointsize>7</pointsize>
      </font>
     </property>
@@ -390,6 +459,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Nimbus Sans Narrow [urw]</family>
       <pointsize>7</pointsize>
      </font>
     </property>
@@ -408,6 +478,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Nimbus Sans Narrow [urw]</family>
       <pointsize>7</pointsize>
      </font>
     </property>
@@ -424,6 +495,11 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
+    </property>
     <property name="text">
      <string>Вернуть в колоду</string>
     </property>
@@ -437,8 +513,55 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
+    </property>
     <property name="text">
      <string>НЕ ПРОВЕРЯТЬ</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shirtCard1PCButton">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>315</x>
+      <y>10</y>
+      <width>141</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>Перестройка</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shirtCard2PCButton">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>465</x>
+      <y>10</y>
+      <width>141</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Sans Narrow [urw]</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>Перестройка</string>
     </property>
    </widget>
    <zorder>deathCardPC2Label</zorder>
@@ -469,6 +592,8 @@
    <zorder>card3TVButton</zorder>
    <zorder>returnToDeckButton</zorder>
    <zorder>not_checkButton</zorder>
+   <zorder>shirtCard1PCButton</zorder>
+   <zorder>shirtCard2PCButton</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action">
