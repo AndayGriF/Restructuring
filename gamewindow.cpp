@@ -1338,15 +1338,16 @@ void GameWindow::on_yellowButton_clicked()
     QString str;
     lastActPlayer = "Телеведущий";
     lastUseAct = lastActPlayer;
-    statusPresentTV = true;
     if (checkingPC())
     {
+        statusPresentTV = false;
         ui->statusPCText->setText("Проверяю");
         enabledAct();
         return;
     }
     else
     {
+        statusPresentTV = true;
         cardActionPlayer(lastActPlayer);
         enabledAct();
         return;
@@ -1418,7 +1419,6 @@ void GameWindow::on_restructButton_clicked()
 void GameWindow::on_checkButton_clicked()
 {
     QString str;
-    lastActPlayer = "Проверка";
     statusPC = 0;
     ui->statusPCText->setText("");
     if (lastActPC == "Предприниматель")
@@ -1557,6 +1557,8 @@ void GameWindow::on_checkButton_clicked()
         }
         if (checkCardPC("Диссидент") == 0)
         {
+            ui->shirtCard1PCButton->setVisible(false);
+            ui->shirtCard2PCButton->setVisible(false);
             statusPC = 0;
             dropCardPC();
             enabledAct();
@@ -1668,6 +1670,7 @@ void GameWindow::on_not_checkButton_clicked()
     }
     if (lastActPC == "Диссидент")
     {
+        if (lastActPlayer == "Телеведущий") cardActionPlayer(lastActPlayer);
         cardMoney("Диссидент", player, playerPC);
         ui->moneyPCLabel->setText(str.setNum(player->money));
         enabledAct();
