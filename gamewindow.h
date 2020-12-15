@@ -23,6 +23,9 @@ public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
 
+signals:
+    void firstwindow();
+
 private slots:
 
     void visibleShirtCard();

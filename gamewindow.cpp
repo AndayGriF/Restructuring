@@ -356,24 +356,24 @@ void GameWindow::enabledAct()
     }
     if (player->money >= 10)
     {
-        ui->greenButton->setEnabled(true);
-        ui->yellowButton->setEnabled(true);
-        ui->blueButton->setEnabled(true);
-        ui->redButton->setEnabled(true);
-        ui->reactButton->setEnabled(false);
-        ui->money1Button->setEnabled(true);
-        ui->restructButton->setEnabled(true);
-        ui->checkButton->setEnabled(false);
-        ui->not_checkButton->setEnabled(false);
-//        ui->greenButton->setEnabled(false);
-//        ui->yellowButton->setEnabled(false);
-//        ui->blueButton->setEnabled(false);
-//        ui->redButton->setEnabled(false);
+//        ui->greenButton->setEnabled(true);
+//        ui->yellowButton->setEnabled(true);
+//        ui->blueButton->setEnabled(true);
+//        ui->redButton->setEnabled(true);
 //        ui->reactButton->setEnabled(false);
-//        ui->money1Button->setEnabled(false);
+//        ui->money1Button->setEnabled(true);
 //        ui->restructButton->setEnabled(true);
 //        ui->checkButton->setEnabled(false);
 //        ui->not_checkButton->setEnabled(false);
+        ui->greenButton->setEnabled(false);
+        ui->yellowButton->setEnabled(false);
+        ui->blueButton->setEnabled(false);
+        ui->redButton->setEnabled(false);
+        ui->reactButton->setEnabled(false);
+        ui->money1Button->setEnabled(false);
+        ui->restructButton->setEnabled(true);
+        ui->checkButton->setEnabled(false);
+        ui->not_checkButton->setEnabled(false);
         return;
     }
 }

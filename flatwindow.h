@@ -2,6 +2,8 @@
 #define FLATWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+#include "gamewindow.h"
 
 namespace Ui {
 class FlatWindow;
@@ -21,8 +23,15 @@ signals:
 private slots:
     void on_backmenuBatton_clicked();
 
+    void on_addPlayerButton_clicked();
+
+    void on_deletePlayerButton_clicked();
+
+    void on_startGameButton_clicked();
+
 private:
     Ui::FlatWindow *ui;
+    GameWindow *GameWin;
 };
 
 #endif // FLATWINDOW_H
