@@ -37,7 +37,6 @@ void FlatWindow::on_addPlayerButton_clicked()
             }
             else ui->listPlayer->addItem("PlayerPc" + str.setNum(countPlayer++) +1);
         }
-        ui->testLabel->setText(tr.setNum(ui->listPlayer->count()));
         if (ui->listPlayer->count() > 1) ui->startGameButton->setEnabled(true);
 }
 
@@ -49,7 +48,6 @@ void FlatWindow::on_deletePlayerButton_clicked()
         delete ui->listPlayer->item(ui->listPlayer->count() -1);
         countPlayer--;
     }
-    ui->testLabel->setText(tr.setNum(ui->listPlayer->count()));
     if (ui->listPlayer->count() < 2) ui->startGameButton->setEnabled(false);
 }
 
