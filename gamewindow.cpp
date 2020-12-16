@@ -197,6 +197,7 @@ void GameWindow::enabledAct()
     ui->restructButton->setEnabled(true);   //
     ui->checkButton->setEnabled(true);      //
     ui->not_checkButton->setEnabled(true);  //
+    ui->shirtPackButton->setVisible(true);
 
     if ((player->count_card < 1) || (playerPC->count_card < 1))
     {
@@ -209,6 +210,7 @@ void GameWindow::enabledAct()
         ui->restructButton->setEnabled(false);
         ui->checkButton->setEnabled(false);
         ui->not_checkButton->setEnabled(false);
+        ui->shirtPackButton->setVisible(false);
         if (playerPC->count_card < 1)
         {
             ui->statusPCText->setText("Вы Победили");
@@ -814,6 +816,8 @@ GameWindow::GameWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     DefRandom();
+    statusPC = 0;
+    ui->checkLabel->setVisible(false);
     ui->card1TVButton->setVisible(false);
     ui->card2TVButton->setVisible(false);
     ui->card3TVButton->setVisible(false);
@@ -821,6 +825,11 @@ GameWindow::GameWindow(QWidget *parent) :
     initPlayer(player);
     initPlayer(playerPC);
     fillCards(&cards[0]);
+    ui->shirtPackButton->setStyleSheet("border-style: solid;"
+                                       "border-width: 3px;"
+                                       "border-color: black;"
+                                       "border-radius: 10px;"
+                                       "background-color: red");
     ui->checkLabel->setStyleSheet("border-style: solid;"
                                   "border-width: 1px;"
                                   "border-color: black;"
@@ -853,6 +862,7 @@ GameWindow::GameWindow(QWidget *parent) :
     ui->card2Button->setStyleSheet(cardColor(cards[1]));
     ui->card1PCLabel->setText(cardFromIntToStr(cards[2]));
     ui->card2PCLabel->setText(cardFromIntToStr(cards[3]));
+    ui->shirtPackButton->setVisible(true);
     enabledAct();
 }
 
